@@ -6,16 +6,27 @@ import { Filter } from './Filter/Filter';
 import { GlobalStyle } from './GlobalStyle';
 import { MainTitle, Title, Wrapper } from './App.styled';
 
+const CONTACTS_KEY = 'contacts';
+
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '+38-097-635-35-83' },
-      { id: 'id-2', name: 'Hermione Kline', number: '+38-067-274-68-29' },
-      { id: 'id-3', name: 'Eden Clements', number: '+38-063-825-36-57' },
-      { id: 'id-4', name: 'Annie Copeland', number: '+38-093-756-55-22' },
-    ],
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = JSON.parse(localStorage.getItem(CONTACTS_KEY));
+    savedContacts &&
+      this.setState({
+        contacts: savedContacts,
+      });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(CONTACTS_KEY, JSON.stringify(this.state.contacts));
+    }
+  }
 
   addContact = newContact => {
     const isExist = this.state.contacts.find(
@@ -36,7 +47,7 @@ export class App extends Component {
   };
 
   deleteContact = e => {
-    const contactToDelete = e.target.id;
+    const contactToDelete = e.currentTarget.id;
     this.setState(prev => ({
       contacts: prev.contacts.filter(({ id }) => id !== contactToDelete),
     }));

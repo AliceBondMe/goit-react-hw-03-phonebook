@@ -16,6 +16,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled(Field)`
+  font-family: inherit;
   background-color: inherit;
   color: #21ebff;
   outline: none;
@@ -26,6 +27,7 @@ export const Input = styled(Field)`
 `;
 
 export const Button = styled.button`
+  font-family: inherit;
   color: #fff;
   width: 130px;
   height: 28px;

@@ -1,16 +1,44 @@
+import { IoTrashBinSharp } from 'react-icons/io5';
 import styled from 'styled-components';
 
 export const Item = styled.li`
+  display: flex;
+  align-items: center;
   color: #21ebff;
   text-shadow: 0 0 10px #ffffff;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+`;
+
+export const Letter = styled.span`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #21ebff;
+  color: #000000;
+  background-color: #21ebff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #21ebff;
+    background-color: #000000;
+  }
+`;
+
+export const BinIcon = styled(IoTrashBinSharp)`
+  width: 20px;
+  height: 20px;
 `;
 
 export const DelButton = styled.button`
+  font-family: inherit;
   color: #fff;
-  width: 64px;
-  height: 20px;
-  padding: 2px 10px;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
